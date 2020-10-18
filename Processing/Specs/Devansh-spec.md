@@ -62,7 +62,7 @@ To review other processing module sections:
 1. Similarly `rotationMatrix` function takes an `Angle` and `Position` of centre pixel to deduce the required rotation matrix in a 2D array form. It is just a local utility function, thus kept private.
 
 ### Interfaces
-```java=
+```java
 /*
  * This interface is used by UI and conducted by 'Client 
  * Side Processing', to call every major functionality 
@@ -93,7 +93,7 @@ public interface IOperation {
 
 ### Classes
 
-```java=
+```java
 /* Supports operations with parameters like `Angle` and
  *  `Intensity`.
  * */
@@ -153,7 +153,7 @@ public class ParameterizedOperationsUtil{
 ```
 
 ### Helper Classes
-```java=
+```java
 // corresponds to pixel color
 public class Intensity {    
     // RGB values at a pixel position
