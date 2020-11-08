@@ -51,13 +51,13 @@ public class ParameterizedOperationsUtil {
 
         Position centrePos = new Position(0, 0);
         int numOfPixels = pixels.size();
-        for(int i = 0; i < numOfPixels; i++) {
+        for (int i = 0; i < numOfPixels; i++) {
 
             centrePos.r += pixels.get(i).position.r;
             centrePos.c += pixels.get(i).position.c;
         }
 
-		if(numOfPixels == 0) {
+		if (numOfPixels == 0) {
 
 			paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "Object is empty!");
 		}
@@ -105,7 +105,7 @@ public class ParameterizedOperationsUtil {
         // changing intensities of selected object's pixels
         ArrayList<Pixel> newPixelSet = new ArrayList<Pixel>();
         newPixelSet = obj.getPixels();
-        for(int i = 0; i < newPixelSet.size(); i++) {
+        for (int i = 0; i < newPixelSet.size(); i++) {
 
             Pixel newPix = new Pixel(newPixelSet.get(i).position, newIntensity);
             newPixelSet.set(i, newPix);
@@ -181,7 +181,7 @@ public class ParameterizedOperationsUtil {
         // generating new list of object's pixels
         ArrayList<Pixel> newPixelSet = new ArrayList<Pixel>();
         newPixelSet = obj.getPixels();
-        for(int i = 0; i < newPixelSet.size(); i++) {
+        for (int i = 0; i < newPixelSet.size(); i++) {
 
             // shifting origin
             Position posWithShiftedOrigin = new Position(newPixelSet.get(i).position.r - centre.r,
