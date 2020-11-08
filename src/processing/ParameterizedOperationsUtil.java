@@ -74,7 +74,7 @@ public class ParameterizedOperationsUtil {
     /**
      * Function calculates the rotation matrix.
      */
-    private static double[][] rotationMatrix(Angle angleOfRotation) {
+    private static double[][] computeRotationMatrix(Angle angleOfRotation) {
 
         // calculating angle, sin, cosine values
         double radians = Math.toRadians(angleOfRotation.angle);
@@ -170,7 +170,7 @@ public class ParameterizedOperationsUtil {
 		try {
 
 			// Calculating the required rotation matrix
-	        double[][] rotMatrix = rotationMatrix(angleOfRotation);
+	        double[][] rotMatrix = computeRotationMatrix(angleOfRotation);
 
 			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotationU: rotation matrix created");
         } catch (Exception e) {
