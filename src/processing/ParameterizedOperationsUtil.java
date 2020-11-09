@@ -19,7 +19,7 @@ import infrastructure.validation.logger.*;
 public class ParameterizedOperationsUtil {
 
     // initialise a reference to the logger singleton object
-	ILogger paraOpLogger = LoggerFactory.getLoggerInstance();
+	static ILogger paraOpLogger = LoggerFactory.getLoggerInstance();
 
     /**
      * Function to update undo-redo stack. Undo-Redo module cannot call this function inorder to
@@ -31,10 +31,10 @@ public class ParameterizedOperationsUtil {
 
 			UndoRedo.pushIntoStack(newObj);
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "Undo-Redo stacks updated");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "Undo-Redo stacks updated");
 		} catch (Exception e) {
 
-            paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "Undo-Redo call failed!");
+            paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "Undo-Redo call failed!");
         }
 
         return;
@@ -56,7 +56,7 @@ public class ParameterizedOperationsUtil {
 
 		if (numOfPixels == 0) {
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "Object is empty!");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "Object is empty!");
 		}
 		else {
 
@@ -120,10 +120,10 @@ public class ParameterizedOperationsUtil {
         	// remove previous object from maps.
         	BoardObject dummyObj = ClientBoardState.maps.removeObjectFromMaps(obj.getObjectId());
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "colorChangeU: old object deleted");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "colorChangeU: old object deleted");
         } catch (Exception e) {
 
-	        paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "colorChangeU: object deletion failed!");
+	        paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "colorChangeU: object deletion failed!");
         }
 
 		try {
@@ -132,10 +132,10 @@ public class ParameterizedOperationsUtil {
         	BoardObject newObj = CurveBuilder.drawCurve(newPixelSet, newBoardOp, newObjectId, newTime,
         	id, prevPixelIntensities, false);
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "colorChangeU: object recreated");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "colorChangeU: object recreated");
         } catch (Exception e) {
 
-	        paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "colorChangeU: object recreation failed!");
+	        paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "colorChangeU: object recreation failed!");
         }
 
         return newObj;
@@ -158,10 +158,10 @@ public class ParameterizedOperationsUtil {
 			// finding centre of rotation (i.e centre Position of previous pixels)
 	        Position centre = new Position(findCentre(prevPixelIntensities));
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotationU: object centre found");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "rotationU: object centre found");
         } catch (Exception e) {
 
-	        paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotationU: centre couldn't be found!");
+	        paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "rotationU: centre couldn't be found!");
         }
 
 		try {
@@ -169,10 +169,10 @@ public class ParameterizedOperationsUtil {
 			// Calculating the required rotation matrix
 	        double[][] rotMatrix = computeRotationMatrix(angleOfRotation);
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotationU: rotation matrix created");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "rotationU: rotation matrix created");
         } catch (Exception e) {
 
-	        paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotationU: rotation matrix couldn't be formed!");
+	        paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "rotationU: rotation matrix couldn't be formed!");
         }
 
         // generating new list of object's pixels
@@ -209,10 +209,10 @@ public class ParameterizedOperationsUtil {
 			// remove previous object from maps.
 	        BoardObject dummyObj = ClientBoardState.maps.removeObjectFromMaps(obj.getObjectId());
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotationU: old object deleted");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "rotationU: old object deleted");
         } catch (Exception e) {
 
-	        paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotationU: object deletion failed!");
+	        paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "rotationU: object deletion failed!");
         }
 
 		try {
@@ -221,10 +221,10 @@ public class ParameterizedOperationsUtil {
 	        BoardObject newObj = CurveBuilder.drawCurve(newPixelSet, newBoardOp, newObjectId, newTime,
 	        id, prevPixelIntensities, false);
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotationU: object recreated");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "rotationU: object recreated");
         } catch (Exception e) {
 
-	        paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotationU: object recreation failed!");
+	        paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "rotationU: object recreation failed!");
         }
 
         return newObj;
@@ -240,10 +240,10 @@ public class ParameterizedOperationsUtil {
 	        BoardObject newObj = colorChangeUtil(obj, id, intensity);
 	        stackUtil(newObj);
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "colorChange: operation completed");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "colorChange: operation completed");
         } catch (Exception e) {
 
-	        paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "colorChange: operation failed!");
+	        paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "colorChange: operation failed!");
         }
 
 		try {
@@ -254,10 +254,10 @@ public class ParameterizedOperationsUtil {
 	        // To send selection updates to UI
 	        CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(newObj.getPixels());
 
-			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "colorChange: updates sent to UI");
+			paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "colorChange: updates sent to UI");
         } catch (Exception e) {
 
-            paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "colorChange: UI updates failed!");
+            paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "colorChange: UI updates failed!");
         }
 	    
 	// change `boardOp` of old object and return it
@@ -278,10 +278,10 @@ public class ParameterizedOperationsUtil {
             BoardObject newObj = rotationUtil(obj, id, angleOfRotation);
             stackUtil(newObj);
 
-            paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotation: operation completed");
+            paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "rotation: operation completed");
         } catch (Exception e) {
 
-            paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotation: operation failed!");
+            paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "rotation: operation failed!");
         }
 
         try {
@@ -292,10 +292,10 @@ public class ParameterizedOperationsUtil {
             // To send selection updates to UI
             CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(newObj.getPixels());
 
-            paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotation: updates sent to UI");
+            paraOpLogger.log(ModuleID.PROCESSING, LogLevel.SUCCESS, "rotation: updates sent to UI");
         } catch (Exception e) {
 
-            paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotation: UI updates failed!");
+            paraOpLogger.log(ModuleID.PROCESSING, LogLevel.ERROR, "rotation: UI updates failed!");
         }
 	    
 	// change `boardOp`, `UserId` of old object and return it
