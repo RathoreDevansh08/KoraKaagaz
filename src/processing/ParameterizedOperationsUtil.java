@@ -19,7 +19,7 @@ import infrastructure.validation.logger.*;
 public class ParameterizedOperationsUtil {
 
     // initialise a reference to the logger singleton object
-	ILogger paraOpLogger = LoggerFactory.getLogger();
+	ILogger paraOpLogger = LoggerFactory.getLoggerInstance();
 
     /**
      * Function to update undo-redo stack. Undo-Redo module cannot call this function inorder to
@@ -233,7 +233,7 @@ public class ParameterizedOperationsUtil {
     /**
      * Function for implementing color-change of select-able objects.
      */
-    public static ObjectId colorChange(BoardObject obj, UserId id, Intensity intensity) {
+    public static BoardObject colorChange(BoardObject obj, UserId id, Intensity intensity) {
 
 		try {
 
@@ -265,13 +265,13 @@ public class ParameterizedOperationsUtil {
 	obj.setOperation(newBoardOp);
 	obj.setUserId(newObj.getUserId());
 
-        return obj.getObjectId();
+        return obj;
     }
 
     /**
      * Function for implementing rotation of select-able objects.
      */
-    public static ObjectId rotation(BoardObject obj, UserId id, Angle angleOfRotation) {
+    public static BoardObject rotation(BoardObject obj, UserId id, Angle angleOfRotation) {
 
         try {
 
@@ -303,6 +303,6 @@ public class ParameterizedOperationsUtil {
 	obj.setOperation(newBoardOp);
 	obj.setUserId(newObj.getUserId());
 
-        return obj.getObjectId();
+        return obj;
     }
 }
