@@ -237,8 +237,8 @@ public class ParameterizedOperationsUtil {
 
 		try {
 
-	        obj = colorChangeUtil(obj, id, intensity);
-	        stackUtil(obj);
+	        BoardObject newObj = colorChangeUtil(obj, id, intensity);
+	        stackUtil(newObj);
 
 			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "colorChange: operation completed");
         } catch (Exception e) {
@@ -249,16 +249,20 @@ public class ParameterizedOperationsUtil {
 		try {
 
 	        // To send all the pixel updates to UI
-	        CommunicateChange.provideChanges(obj.getPrevIntensity(), obj.getPixels());
+	        CommunicateChange.provideChanges(newObj.getPrevIntensity(), newObj.getPixels());
 
 	        // To send selection updates to UI
-	        CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(obj.getPixels());
+	        CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(newObj.getPixels());
 
 			paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "colorChange: updates sent to UI");
         } catch (Exception e) {
 
             paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "colorChange: UI updates failed!");
         }
+	    
+	// change `boardOp` of old object and return it
+	IBoardObjectOperation newBoardOp = new ColorChangeOperation(intensity);
+	obj.setOperation(newBoardOp);
 
         return obj.getObjectId();
     }
@@ -270,8 +274,8 @@ public class ParameterizedOperationsUtil {
 
         try {
 
-            obj = rotationUtil(obj, id, angleOfRotation);
-            stackUtil(obj);
+            BoardObject newObj = rotationUtil(obj, id, angleOfRotation);
+            stackUtil(newObj);
 
             paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotation: operation completed");
         } catch (Exception e) {
@@ -282,16 +286,20 @@ public class ParameterizedOperationsUtil {
         try {
 
             // To send all the pixel updates to UI
-            CommunicateChange.provideChanges(obj.getPrevIntensity(), obj.getPixels());
+            CommunicateChange.provideChanges(newObj.getPrevIntensity(), newObj.getPixels());
 
             // To send selection updates to UI
-            CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(obj.getPixels());
+            CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(newObj.getPixels());
 
             paraOpLogger.log(moduleID.PROCESSING, logLevelID.SUCCESS, "rotation: updates sent to UI");
         } catch (Exception e) {
 
             paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotation: UI updates failed!");
         }
+	    
+	// change `boardOp` of old object and return it
+	IBoardObjectOperation newBoardOp = new RotateOperation(angleOfRotation);
+	obj.setOperation(newBoardOp);
 
         return obj.getObjectId();
     }
