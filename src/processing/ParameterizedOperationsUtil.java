@@ -263,6 +263,7 @@ public class ParameterizedOperationsUtil {
 	// change `boardOp` of old object and return it
 	IBoardObjectOperation newBoardOp = new ColorChangeOperation(intensity);
 	obj.setOperation(newBoardOp);
+	obj.setUserId(newObj.getUserId());
 
         return obj.getObjectId();
     }
@@ -297,9 +298,10 @@ public class ParameterizedOperationsUtil {
             paraOpLogger.log(moduleID.PROCESSING, logLevelID.ERROR, "rotation: UI updates failed!");
         }
 	    
-	// change `boardOp` of old object and return it
+	// change `boardOp`, `UserId` of old object and return it
 	IBoardObjectOperation newBoardOp = new RotateOperation(angleOfRotation);
 	obj.setOperation(newBoardOp);
+	obj.setUserId(newObj.getUserId());
 
         return obj.getObjectId();
     }
