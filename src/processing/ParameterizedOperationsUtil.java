@@ -3,10 +3,7 @@ package processing;
 import java.util.*;
 import processing.boardobject.*;
 import processing.utility.*;
-import infrastructure.Logger.LoggerFactory;
-import infrastructure.Logger.ILogger;
-import infrastructure.Logger.moduleID;
-import infrastructure.Logger.logLevelID;
+import infrastructure.validation.logger.*;
 
 /**
  *
