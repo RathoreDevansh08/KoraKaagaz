@@ -125,10 +125,11 @@ public class ParameterizedOperationsUtil {
 		// set (COLOR_CHANGE) as the operation which is applied on object.
 		IBoardObjectOperation newBoardOp = new ColorChangeOperation(newIntensity);
 
+		BoardObject dummyObj = null;
 		try {
 
 			// remove previous object from maps.
-			BoardObject dummyObj = ClientBoardState.maps.removeObjectFromMaps(obj.getObjectId());
+			dummyObj = ClientBoardState.maps.removeObjectFromMaps(obj.getObjectId());
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
@@ -144,10 +145,11 @@ public class ParameterizedOperationsUtil {
 			);
 		}
 
+		BoardObject newObj = null;
 		try {
 
 			// create a new object with same objectId, timestamp and other updated values.
-			BoardObject newObj = CurveBuilder.drawCurve(newPixelSet, newBoardOp, newObjectId, newTime,
+			newObj = CurveBuilder.drawCurve(newPixelSet, newBoardOp, newObjectId, newTime,
 			id, prevPixelIntensities, false);
 
 			paraOpLogger.log(
@@ -179,10 +181,11 @@ public class ParameterizedOperationsUtil {
 		ArrayList<Pixel> prevPixelIntensities = new ArrayList<Pixel>();
 		prevPixelIntensities = obj.getPixels();
 
+		Position centre = null;
 		try {
 
 			// finding centre of rotation (i.e centre Position of previous pixels)
-			Position centre = new Position(findCentre(prevPixelIntensities));
+			centre = new Position(findCentre(prevPixelIntensities));
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
@@ -198,10 +201,11 @@ public class ParameterizedOperationsUtil {
 			);
 		}
 
+		double[][] rotMatrix = new double[2][2];
 		try {
 
 			// Calculating the required rotation matrix
-			double[][] rotMatrix = computeRotationMatrix(angleOfRotation);
+			rotMatrix = computeRotationMatrix(angleOfRotation);
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
@@ -246,10 +250,11 @@ public class ParameterizedOperationsUtil {
 		// set (ROTATE) as the operation which is applied on object.
 		IBoardObjectOperation newBoardOp = new RotateOperation(angleOfRotation);
 
+		BoardObject dummyObj = null;
 		try {
 
 			// remove previous object from maps.
-			BoardObject dummyObj = ClientBoardState.maps.removeObjectFromMaps(obj.getObjectId());
+			dummyObj = ClientBoardState.maps.removeObjectFromMaps(obj.getObjectId());
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
@@ -265,10 +270,11 @@ public class ParameterizedOperationsUtil {
 			);
 		}
 
+		BoardObject newObj = null;
 		try {
 
 			// create a new object with same objectId, timestamp and other updated values.
-			BoardObject newObj = CurveBuilder.drawCurve(newPixelSet, newBoardOp, newObjectId, newTime,
+			newObj = CurveBuilder.drawCurve(newPixelSet, newBoardOp, newObjectId, newTime,
 			id, prevPixelIntensities, false);
 
 			paraOpLogger.log(
@@ -293,9 +299,10 @@ public class ParameterizedOperationsUtil {
 	 */
 	public static BoardObject colorChange(BoardObject obj, UserId id, Intensity intensity) {
 
+		BoardObject newObj = null;
 		try {
 
-			BoardObject newObj = colorChangeUtil(obj, id, intensity);
+			newObj = colorChangeUtil(obj, id, intensity);
 			stackUtil(newObj);
 
 			paraOpLogger.log(
@@ -347,9 +354,10 @@ public class ParameterizedOperationsUtil {
 	 */
 	public static BoardObject rotation(BoardObject obj, UserId id, Angle angleOfRotation) {
 
+		BoardObject newObj = null;
 		try {
 
-			BoardObject newObj = rotationUtil(obj, id, angleOfRotation);
+			newObj = rotationUtil(obj, id, angleOfRotation);
 			stackUtil(newObj);
 
 			paraOpLogger.log(
