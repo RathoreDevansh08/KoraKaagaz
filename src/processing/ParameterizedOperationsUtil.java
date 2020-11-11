@@ -31,15 +31,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"Undo-Redo stacks updated"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "Undo-Redo stacks updated"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"Undo-Redo call failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "Undo-Redo call failed!"
 			);
 		}
 
@@ -133,15 +135,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"colorChangeU: old object deleted"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChangeU: old object deleted"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"colorChangeU: object deletion failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChangeU: object deletion failed!"
 			);
 		}
 
@@ -154,15 +158,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"colorChangeU: object recreated"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChangeU: object recreated"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"colorChangeU: object recreation failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChangeU: object recreation failed!"
 			);
 		}
 
@@ -189,15 +195,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"rotationU: object centre found"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: object centre found"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"rotationU: centre couldn't be found!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: centre couldn't be found!"
 			);
 		}
 
@@ -209,15 +217,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"rotationU: rotation matrix created"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: rotation matrix created"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"rotationU: rotation matrix couldn't be formed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: rotation matrix couldn't be formed!"
 			);
 		}
 
@@ -258,15 +268,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"rotationU: old object deleted"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: old object deleted"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"rotationU: object deletion failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: object deletion failed!"
 			);
 		}
 
@@ -279,15 +291,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"rotationU: object recreated"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: object recreated"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"rotationU: object recreation failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotationU: object recreation failed!"
 			);
 		}
 
@@ -307,15 +321,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"colorChange: operation completed"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChange: operation completed"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"colorChange: operation failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChange: operation failed!"
 			);
 		}
 
@@ -329,15 +345,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"colorChange: updates sent to UI"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChange: updates sent to UI"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"colorChange: UI updates failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "colorChange: UI updates failed!"
 			);
 		}
 
@@ -362,15 +380,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"rotation: operation completed"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotation: operation completed"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"rotation: operation failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotation: operation failed!"
 			);
 		}
 
@@ -384,15 +404,17 @@ public class ParameterizedOperationsUtil {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.SUCCESS, 
-				"rotation: updates sent to UI"
+				LogLevel.SUCCESS,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotation: updates sent to UI"
 			);
 		} catch (Exception e) {
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
-				LogLevel.ERROR, 
-				"rotation: UI updates failed!"
+				LogLevel.ERROR,
+				"[#" + Thread.currentThread().getId() + "] "
+				+ "rotation: UI updates failed!"
 			);
 		}
 
