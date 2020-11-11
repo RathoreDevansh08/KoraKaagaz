@@ -103,7 +103,7 @@ public class ParameterizedOperationsUtil {
 	 * Function to change colors of object, store all required object's data members in local
 	 * variables, call for removing previous object from all utility maps, and finally create
 	 * new updated object.
-	 * To be called by ClientSideProcessing(vis colorChange function) and UndoRedo sections.
+	 * To be called by ClientSideProcessing(via colorChange function) and UndoRedo sections.
 	 */
 	public static BoardObject colorChangeUtil(BoardObject obj, UserId id, Intensity newIntensity) {
 
@@ -350,7 +350,8 @@ public class ParameterizedOperationsUtil {
 			CommunicateChange.provideChanges(newObj.getPrevIntensity(), newObj.getPixels());
 
 			// To send selection updates to UI
-			CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(newObj.getPixels());
+			CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI)
+				.giveSelectedPixels(newObj.getPixels());
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
@@ -368,12 +369,12 @@ public class ParameterizedOperationsUtil {
 			);
 		}
 
-	// change `boardOp` of old object and return it
-	IBoardObjectOperation newBoardOp = new ColorChangeOperation(intensity);
-	obj.setOperation(newBoardOp);
-	obj.setUserId(newObj.getUserId());
+		// change `boardOp` of old object and return it
+		IBoardObjectOperation newBoardOp = new ColorChangeOperation(intensity);
+		obj.setOperation(newBoardOp);
+		obj.setUserId(newObj.getUserId());
 
-	return obj;
+		return obj;
 	}
 
 	/**
@@ -409,7 +410,8 @@ public class ParameterizedOperationsUtil {
 			CommunicateChange.provideChanges(newObj.getPrevIntensity(), newObj.getPixels());
 
 			// To send selection updates to UI
-			CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI).giveSelectedPixels(newObj.getPixels());
+			CommunicateChange.identifierToHandler.get(CommunicateChange.identifierUI)
+				.giveSelectedPixels(newObj.getPixels());
 
 			paraOpLogger.log(
 				ModuleID.PROCESSING, 
@@ -427,11 +429,11 @@ public class ParameterizedOperationsUtil {
 			);
 		}
 
-	// change `boardOp`, `UserId` of old object and return it
-	IBoardObjectOperation newBoardOp = new RotateOperation(angleOfRotation);
-	obj.setOperation(newBoardOp);
-	obj.setUserId(newObj.getUserId());
+		// change `boardOp`, `UserId` of old object and return it
+		IBoardObjectOperation newBoardOp = new RotateOperation(angleOfRotation);
+		obj.setOperation(newBoardOp);
+		obj.setUserId(newObj.getUserId());
 
-	return obj;
+		return obj;
 	}
 }
