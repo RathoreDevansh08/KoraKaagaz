@@ -237,13 +237,22 @@ public class ParameterizedOperationsUtil {
 		for (int i = 0; i < newPixelSet.size(); i++) {
 
 			// shifting origin
-			Position posWithShiftedOrigin = new Position(newPixelSet.get(i).position.r - centre.r,
-			newPixelSet.get(i).position.c - centre.c);
+			Position posWithShiftedOrigin = new Position(
+				newPixelSet.get(i).position.r - centre.r,
+				newPixelSet.get(i).position.c - centre.c
+			);
 
 			// applying rotation matrix followed by Narrowing Type Casting
-			Position rotatedPos = new Position((int)(rotMatrix[0][0] * posWithShiftedOrigin.r +
-			rotMatrix[0][1] * posWithShiftedOrigin.c), (int)(rotMatrix[1][0] * posWithShiftedOrigin.r
-			+ rotMatrix[1][1] * posWithShiftedOrigin.c));
+			Position rotatedPos = new Position(
+				(int)(
+					rotMatrix[0][0] * posWithShiftedOrigin.r 
+					+ rotMatrix[0][1] * posWithShiftedOrigin.c
+				), 
+				(int)(
+					rotMatrix[1][0] * posWithShiftedOrigin.r
+					+ rotMatrix[1][1] * posWithShiftedOrigin.c
+				)
+			);
 
 			// Re-align according to the calculated centre
 			Position finalPos = new Position(rotatedPos.r + centre.r, rotatedPos.c + centre.c);
